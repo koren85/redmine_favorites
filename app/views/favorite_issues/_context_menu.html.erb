@@ -1,0 +1,25 @@
+<% if User.current.logged? %>
+  <li class="folder">
+    <a href="#" class="submenu"><%= l(:label_favorite_issues) %></a>
+    <ul>
+      <% if any_favorite %>
+        <li>
+          <%= context_menu_link l(:button_remove_favorite),
+                               favorite_issues_path(issue_id: issues.map(&:id)),
+                               method: :delete,
+                               class: 'icon-fav-off',
+                               remote: true %>
+        </li>
+      <% end %>
+      <% unless all_favorite %>
+        <li>
+          <%= context_menu_link l(:button_add_favorite),
+                               favorite_issues_path(issue_id: issues.map(&:id)),
+                               method: :post,
+                               class: 'icon-fav',
+                               remote: true %>
+        </li>
+      <% end %>
+    </ul>
+  </li>
+<% end %>

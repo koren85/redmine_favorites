@@ -1,0 +1,7 @@
+// Показываем сообщение об ошибке
+$('#ajax-indicator').hide();
+$('#flash_error').html('<%= escape_javascript l(:error_favorite_issue_action) %>');
+$('#flash_error').show().delay(5000).fadeOut('slow');
+
+// Удаляем класс обработки со всех иконок
+$('.favorite-icon.processing').removeClass('processing');

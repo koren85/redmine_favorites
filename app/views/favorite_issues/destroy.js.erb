@@ -1,0 +1,57 @@
+<% if @issues.present? %>
+  <% @issues.each do |issue| %>
+    // Обновляем кнопку избранного для задачи <%= issue.id %>
+    var issueId = <%= issue.id %>;
+    var $links = $('a[data-issue-id="' + issueId + '"].icon-favorite-off, a[data-issue-id="' + issueId + '"].icon-favorite');
+    if ($links.length > 0) {
+      $links.each(function() {
+        var $link = $(this);
+        var hasText = !$link.hasClass('icon-only');
+        $link
+          .hide()
+          .removeClass('icon-favorite')
+          .addClass('icon-favorite-off')
+          .attr('title', '<%= escape_javascript l(:button_add_favorite) %>')
+          .attr('href', '<%= escape_javascript favorite_issues_path(issue_id: issue.id) %>')
+          .attr('data-method', 'post')
+          .data('method', 'post');
+        if (hasText) {
+          $link.text('<%= escape_javascript l(:label_favorite) %>');
+        }
+        $link.fadeIn(300);
+      });
+    }
+  <% end %>
+<% elsif @issue.present? %>
+  // Обновляем кнопку избранного для задачи
+  var issueId = <%= @issue.id %>;
+  var $links = $('a[data-issue-id="' + issueId + '"].icon-favorite-off, a[data-issue-id="' + issueId + '"].icon-favorite');
+  if ($links.length > 0) {
+    $links.each(function() {
+      var $link = $(this);
+      var hasText = !$link.hasClass('icon-only');
+      $link
+        .hide()
+        .removeClass('icon-favorite')
+        .addClass('icon-favorite-off')
+        .attr('title', '<%= escape_javascript l(:button_add_favorite) %>')
+        .attr('href', '<%= escape_javascript favorite_issues_path(issue_id: @issue.id) %>')
+        .attr('data-method', 'post')
+        .data('method', 'post');
+      if (hasText) {
+        $link.text('<%= escape_javascript l(:label_favorite) %>');
+      }
+      $link.fadeIn(300);
+    });
+  }
+<% end %>
+
+// Показываем уведомление
+$('#ajax-indicator').hide();
+if ($('#flash_notice').length > 0) {
+  $('#flash_notice').html('<%= escape_javascript l(:notice_successful_delete) %>').show().delay(5000).fadeOut('slow');
+} else {
+  // Создаем элемент уведомления, если его нет
+  $('body').prepend('<div id="flash_notice" class="flash notice"><%= escape_javascript l(:notice_successful_delete) %></div>');
+  $('#flash_notice').delay(5000).fadeOut('slow');
+}

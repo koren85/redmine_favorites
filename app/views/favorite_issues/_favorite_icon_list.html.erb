@@ -1,0 +1,5 @@
+<% if User.current.logged? && issue.present? %>
+  <td class="favorite-issue-icon">
+    <%= favorite_icon(issue, User.current) %>
+  </td>
+<% end %>

@@ -1,0 +1,13 @@
+<% issue = local_assigns[:issue] || @issue %>
+<% if User.current.logged? && issue.present? %>
+<script>
+  $(document).ready(function() {
+    var favoriteHtml = '<%= escape_javascript(favorite_link(issue, User.current)) %>';
+    var $contextual = $('#content > .contextual').first();
+    if ($contextual.length > 0 && $contextual.find('.icon-favorite, .icon-favorite-off').length === 0) {
+      $contextual.prepend(favoriteHtml);
+      $contextual.prepend(' ');
+    }
+  });
+</script>
+<% end %>

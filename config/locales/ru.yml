@@ -1,0 +1,13 @@
+ru:
+  label_favorite: Избранное
+  label_favorites: Избранное
+  label_favorite_issues: Избранные задачи
+  label_no_favorite_issues_hint: Вы можете добавлять задачи в избранное, нажимая на иконку звезды на странице задачи или в списке задач.
+  button_add_favorite: Добавить в избранное
+  button_remove_favorite: Удалить из избранного
+  notice_successful_create: Успешно добавлено в избранное
+  notice_successful_delete: Успешно удалено из избранного
+  error_favorite_issue_create: Ошибка при добавлении задачи в избранное
+  error_favorite_issue_delete: Ошибка при удалении задачи из избранного
+  error_favorite_issue_action: Ошибка при выполнении действия с избранной задачей
+  already_favorite: уже в избранном

@@ -1,0 +1,84 @@
+.icon-favorite {
+  background-image: url(../images/favorite.png);
+  /*background-repeat: no-repeat;*/
+  /*background-position: 0% 50%;*/
+  background-size: 20px 20px;
+  /*padding-left: 20px;*/
+}
+
+.icon-favorite-off {
+  background-image: url('../images/favorite_off.png');
+ /* background-repeat: no-repeat;*/
+ /* background-position: 0% 50%;*/
+ background-size: 20px 20px;
+  /*padding-left: 20px;*/
+}
+
+.favorite-issue-button {
+  display: inline-block;
+}
+
+/* Колонка избранного в таблице задач */
+.favorite-issue-icon {
+  width: 22px;
+  text-align: center;
+  padding: 2px;
+}
+
+/* Иконка без текста для таблиц */
+a.icon-only.icon-favorite,
+a.icon-only.icon-favorite-off {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 16px 16px;
+  padding: 0;
+  margin: 0;
+  vertical-align: middle;
+}
+
+a.icon-only.icon-favorite {
+  background-image: url(../images/favorite.png);
+}
+
+a.icon-only.icon-favorite-off {
+  background-image: url(../images/favorite_off.png);
+}
+
+/* Стили для кнопки избранного */
+.contextual .icon-favorite,
+.contextual .icon-favorite-off {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Стили для анимации при клике */
+a.icon-favorite:hover,
+a.icon-favorite-off:hover {
+  text-decoration: underline;
+}
+
+a.icon-favorite.processing,
+a.icon-favorite-off.processing {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+/* Стили для контекстного меню */
+#context-menu .icon-favorite {
+  background-image: url(../images/favorite.png);
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  background-size: 16px 16px;
+  padding-left: 20px;
+}
+
+#context-menu .icon-favorite-off {
+  background-image: url(../images/favorite_off.png);
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  background-size: 16px 16px;
+  padding-left: 20px;
+}

@@ -1,0 +1,29 @@
+<h3><%= link_to l(:label_favorite_issues), favorite_issues_path %></h3>
+
+<% favorite_issue_ids = FavoriteIssue.where(user_id: User.current.id).order(created_at: :desc).limit(10).pluck(:issue_id) %>
+<% favorite_issues = Issue.visible.where(id: favorite_issue_ids).includes(:status, :priority, :tracker, :project).sort_by { |i| favorite_issue_ids.index(i.id) } %>
+
+<% if favorite_issues.any? %>
+  <ul class="favorite-issues">
+    <% favorite_issues.each do |issue| %>
+      <li style="list-style: none; padding: 5px 0; border-bottom: 1px solid #e0e0e0;">
+        <%= link_to_issue(issue, :project => (issue.project != @project)) %>
+        <span class="issue-details" style="color: #999; font-size: 0.9em;">
+          - <%= issue.status.name %> -
+          <span style="color: <%= issue.priority.is_default? ? '#666' : (issue.priority.position >= 3 ? '#c00' : '#666') %>;">
+            <%= issue.priority.name %>
+          </span>
+        </span>
+      </li>
+    <% end %>
+  </ul>
+
+  <% if FavoriteIssue.where(user_id: User.current.id).count > 10 %>
+    <p class="buttons">
+      <%= link_to l(:label_issue_view_all), favorite_issues_path, :class => 'icon icon-list' %>
+    </p>
+  <% end %>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+  <p><%= l(:label_no_favorite_issues_hint) %></p>
+<% end %>

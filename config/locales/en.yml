@@ -1,0 +1,13 @@
+en:
+  label_favorite: Favorite
+  label_favorites: Favorites
+  label_favorite_issues: Favorite issues
+  label_no_favorite_issues_hint: You can add issues to favorites by clicking the star icon on the issue page or in the issue list.
+  button_add_favorite: Add to favorites
+  button_remove_favorite: Remove from favorites
+  notice_successful_create: Successfully added to favorites
+  notice_successful_delete: Successfully removed from favorites
+  error_favorite_issue_create: Error adding issue to favorites
+  error_favorite_issue_delete: Error removing issue from favorites
+  error_favorite_issue_action: Error performing action on favorite issue
+  already_favorite: is already in favorites
