@@ -1,7 +1,6 @@
 class FavoriteIssuesController < ApplicationController
   before_action :require_login
   before_action :find_issue, only: [:create, :destroy]
-  before_action :authorize_global
   
   helper :queries
   helper :issues
@@ -21,6 +20,11 @@ class FavoriteIssuesController < ApplicationController
     @query ||= IssueQuery.new(:name => l(:label_favorite_issues))
     @query.project = nil # global query
     @query.build_from_params(params)
+
+    # Устанавливаем переменные для совместимости с другими плагинами
+    @project = nil
+    @sidebar_queries = []
+    @sidebar_tags = [] if defined?(AdditionalTags)
     
     # Настройка сортировки по умолчанию
     sort_init(@query.sort_criteria.empty? ? [['id', 'desc']] : @query.sort_criteria)

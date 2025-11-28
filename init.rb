@@ -13,16 +13,6 @@ Redmine::Plugin.register :redmine_favorites do
     { controller: 'favorite_issues', action: 'index' },
     caption: :label_favorites,
     if: Proc.new { User.current.logged? }
-  
-  # Добавляем разрешения
-  permission :view_favorite_issues, { favorite_issues: [:index] }
-  permission :manage_favorite_issues, { favorite_issues: [:create, :destroy] }
-  
-  # Добавляем модуль в проект
-  project_module :favorite_issues do
-    permission :view_favorite_issues, { favorite_issues: [:index] }
-    permission :manage_favorite_issues, { favorite_issues: [:create, :destroy] }
-  end
 end
 
 # Подключаем хуки
