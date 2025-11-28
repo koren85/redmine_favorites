@@ -17,23 +17,28 @@ module RedmineFavorites
       
       # Добавляем пункт в контекстное меню задачи
       def view_issues_context_menu_start(context)
-        issue_ids = context[:issues].map(&:id)
+        return '' unless User.current.logged?
+
+        issues = context[:issues]
+        return '' unless issues.present?
+
+        issue_ids = issues.map(&:id)
         user = User.current
-        
+
         # Получаем избранные задачи для текущего пользователя из выбранных задач
         favorite_issue_ids = FavoriteIssue.where(user_id: user.id, issue_id: issue_ids).pluck(:issue_id)
-        
+
         # Определяем, все ли выбранные задачи являются избранными
         all_favorite = favorite_issue_ids.size == issue_ids.size
-        
+
         # Определяем, есть ли среди выбранных задач избранные
         any_favorite = favorite_issue_ids.any?
-        
+
         # Добавляем пункты в контекстное меню
         context[:controller].send(:render_to_string, {
           partial: 'favorite_issues/context_menu',
           locals: {
-            issues: context[:issues],
+            issues: issues,
             favorite_issue_ids: favorite_issue_ids,
             all_favorite: all_favorite,
             any_favorite: any_favorite
