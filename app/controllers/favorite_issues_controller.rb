@@ -7,6 +7,12 @@ class FavoriteIssuesController < ApplicationController
   include QueriesHelper
   include IssuesHelper
   include SortHelper
+
+  # Поддержка плагина additional_tags
+  if defined?(AdditionalTagsIssuesHelper)
+    helper :additional_tags_issues
+    include AdditionalTagsIssuesHelper
+  end
   
   # Переопределяем метод base_scope для IssueQuery, чтобы он возвращал только избранные задачи
   def base_scope_with_favorites
@@ -23,8 +29,6 @@ class FavoriteIssuesController < ApplicationController
 
     # Устанавливаем переменные для совместимости с другими плагинами
     @project = nil
-    @sidebar_queries = []
-    @sidebar_tags = [] if defined?(AdditionalTags)
     
     # Настройка сортировки по умолчанию
     sort_init(@query.sort_criteria.empty? ? [['id', 'desc']] : @query.sort_criteria)

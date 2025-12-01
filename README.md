@@ -58,7 +58,7 @@ rake redmine:plugins:migrate RAILS_ENV=production
 
 ## Автор
 
-Ваше имя
+Chernyaev Alexandr
 
 ## Поддерживаемые версии Redmine
 
