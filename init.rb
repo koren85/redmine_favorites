@@ -5,8 +5,8 @@ Redmine::Plugin.register :redmine_favorites do
   author 'Your Name'
   description 'This plugin allows users to mark issues as favorites'
   version '0.0.1'
-  url 'https://github.com/yourusername/redmine_favorites'
-  author_url 'https://github.com/yourusername'
+  url 'https://github.com/koren85/redmine_favorites'
+  author_url 'https://github.com/koren85'
   
   # Добавляем пункт в глобальное меню
   menu :top_menu, :favorites,
