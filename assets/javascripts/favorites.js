@@ -32,43 +32,43 @@ $(document).ready(function() {
   $(document).on('ajax:complete', moveFavoriteButtonToActions);
   
   // Добавляем колонку избранного в таблицу задач (после checkbox, перед номером)
-  // function addFavoriteColumn() {
-  //   var $issuesTable = $('.list.issues');
-  //   if ($issuesTable.length > 0) {
-  //     // Добавляем заголовок колонки после checkbox
-  //     var $headerRow = $issuesTable.find('thead tr');
-  //     if ($headerRow.find('th.favorite-issue-icon').length === 0) {
-  //       var $checkboxTh = $headerRow.find('th.checkbox').first();
-  //       if ($checkboxTh.length > 0) {
-  //         $checkboxTh.after('<th class="favorite-issue-icon" title="' + 'Избранное' + '"></th>');
-  //       }
-  //     }
-  //
-  //     // Перемещаем td.favorite-issue-icon после td.checkbox в каждой строке
-  //     $issuesTable.find('tbody tr[id^="issue-"]').each(function() {
-  //       var $row = $(this);
-  //       var $favoriteTd = $row.find('td.favorite-issue-icon');
-  //       var $checkboxTd = $row.find('td.checkbox').first();
-  //
-  //       if ($favoriteTd.length > 0 && $checkboxTd.length > 0) {
-  //         // Перемещаем после checkbox, если она еще не там
-  //         if ($favoriteTd.prev()[0] !== $checkboxTd[0]) {
-  //           $favoriteTd.detach().insertAfter($checkboxTd);
-  //         }
-  //       }
-  //     });
-  //
-  //     // Обновляем colspan для группировочных строк
-  //     var expectedColspan = $headerRow.find('th').length;
-  //     $issuesTable.find('tr.group td[colspan]').each(function() {
-  //       var $td = $(this);
-  //       var currentColspan = parseInt($td.attr('colspan'));
-  //       if (currentColspan !== expectedColspan) {
-  //         $td.attr('colspan', expectedColspan);
-  //       }
-  //     });
-  //   }
-  // }
+  function addFavoriteColumn() {
+    // var $issuesTable = $('.list.issues');
+    // if ($issuesTable.length > 0) {
+    //   // Добавляем заголовок колонки после checkbox
+    //   var $headerRow = $issuesTable.find('thead tr');
+    //   if ($headerRow.find('th.favorite-issue-icon').length === 0) {
+    //     var $checkboxTh = $headerRow.find('th.checkbox').first();
+    //     if ($checkboxTh.length > 0) {
+    //       $checkboxTh.after('<th class="favorite-issue-icon" title="' + 'Избранное' + '"></th>');
+    //     }
+    //   }
+    //
+    //   // Перемещаем td.favorite-issue-icon после td.checkbox в каждой строке
+    //   $issuesTable.find('tbody tr[id^="issue-"]').each(function() {
+    //     var $row = $(this);
+    //     var $favoriteTd = $row.find('td.favorite-issue-icon');
+    //     var $checkboxTd = $row.find('td.checkbox').first();
+    //
+    //     if ($favoriteTd.length > 0 && $checkboxTd.length > 0) {
+    //       // Перемещаем после checkbox, если она еще не там
+    //       if ($favoriteTd.prev()[0] !== $checkboxTd[0]) {
+    //         $favoriteTd.detach().insertAfter($checkboxTd);
+    //       }
+    //     }
+    //   });
+    //
+    //   // Обновляем colspan для группировочных строк
+    //   var expectedColspan = $headerRow.find('th').length;
+    //   $issuesTable.find('tr.group td[colspan]').each(function() {
+    //     var $td = $(this);
+    //     var currentColspan = parseInt($td.attr('colspan'));
+    //     if (currentColspan !== expectedColspan) {
+    //       $td.attr('colspan', expectedColspan);
+    //     }
+    //   });
+    // }
+  }
 
   // Вызываем при загрузке страницы
   addFavoriteColumn();
